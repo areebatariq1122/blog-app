@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  
+
+  <style>
+      table, td {
+        width: 50%;
+        border: 1px solid white;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      td {
+        padding: 4px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #eee;
+      }
+    </style>
+  <body>
+
+    <table>
+      <tr>
+        <% unless comment.archived? %>
+          <td><p style="font-size: 20px; font-family: Aries; font-weight: 200;"><%= comment.commenter %> </p> </td>
+          <td><p style="font-size: 20px; font-family: Aries; font-weight: 200;"><%= comment.body %> </p></td>
+          <td><p style="font-size: 20px; font-family: Aries; font-weight: 200;"><%= link_to "Delete Comment", [comment.article, comment], data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p></td>
+        <% end %>
+      </tr>
+    </table>
+    
+
+  </body>
+</html>

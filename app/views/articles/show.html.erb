@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="application.css">
+
+    <style>
+      table {
+        width: 50%;
+        border: 1px solid white;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      td {
+        padding: 4px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #eee;
+      }
+    </style>
+
+  </head>
+<body>
+  <nav>
+    <div class="menu">
+      <div class="logo">
+        <a href="#">Blogs</a>
+      </div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Feedback</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="img"></div>
+  <div class="center">
+    <div class="title"> <%= @article.title%> </div>
+    <p style="color:white;"><%= @article.body%></p>
+    <% if @article.image.present? %>
+              <img src="<%= @article.image %>" alt="Article Image" style="width:100px;height:100px; text-align:right;">
+            <% else %>
+              <p>No image available</p>
+            <% end %>
+            
+    <ul>
+      <li> 
+        <h2 style="color:white;">
+          <div class="btns">
+            <button><%= link_to "Edit", edit_article_path(@article) %></button>
+            <button><%= link_to "Delete", article_path(@article), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></button>
+            
+          </div>                 
+        </h2>
+      </li>
+    </ul>
+    
+
+    <h2 style="color:white;">
+      <div class="title" style="font-size: 40px; font-family: Aries; font-weight: 400;"> Comments: </div> 
+      
+      <table>
+        <tr>
+          <th>Commenter</th>
+          <th>Comment</th>
+          <th>Delete</th>
+        </tr>
+      </table>
+      
+      <p style="color:white;"><%= render @article.comments %></p>          
+    </h2>
+
+    <h2 style="color:white;">
+      <div class="title" style="font-size: 40px; font-family: Aries; font-weight: 400;"> Add a comment: </div> 
+      <p style="color:white;"><%= render 'comments/form' %></p>             
+    </h2>
+
+  </div>
+  
+</body>
+</html>
+
+

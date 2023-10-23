@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="application.css">
+   </head>
+<body>
+  <nav> 
+    <div class="menu">
+      <div class="logo">
+        <a href="index.html.erb">Blogs</a>
+      </div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Feedback</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="img"></div>
+  <div class="center">
+    <div class="title">Articles</div>
+    <p style="color:white;">Our blog has <%= Article.public_count %> articles and counting!</p>
+    
+    <ul>
+      <% @articles.each do |article| %>
+        <% unless article.archived? %>
+          <li> 
+            <h1 style="color:white;">
+              <div class="btns">
+                <button><%= link_to article.title, article%></button>
+              </div>                 
+            </h1>
+          </li>
+        <% end %>  
+      <%end%>
+    </ul>
+    
+    <h2 style="color:white;">
+      <div class="btns">
+        <button><%= link_to "New Article", new_article_path %></button>
+      </div>                 
+    </h2>
+    
+
+  </div>
+  
+</body>
+</html>
+
+
+
