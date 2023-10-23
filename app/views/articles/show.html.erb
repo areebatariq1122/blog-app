@@ -29,7 +29,9 @@
   <nav>
     <div class="menu">
       <div class="logo">
-        <a href="#">Blogs</a>
+        <%= link_to articles_path do %>
+          <span> Blogs</span>
+        <% end %>
       </div>
       <ul>
         <li><a href="#">Home</a></li>

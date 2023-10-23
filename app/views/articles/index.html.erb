@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="application.css">
    </head>
 <body>
-  <nav> 
+
+<% if user_signed_in? %> 
+<nav> 
     <div class="menu">
       <div class="logo">
-        <a href="index.html.erb">Blogs</a>
+        <a href="#">Blogs</a>
       </div>
       <ul>
         <li><a href="#">Home</a></li>
@@ -44,10 +46,20 @@
       <div class="btns">
         <button><%= link_to "New Article", new_article_path %></button>
       </div>                 
+      <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
     </h2>
     
 
   </div>
+ 
+<% else %>
+  <div class="center">
+    <div class="btns">
+      <%= button_to "Sign in", new_user_session_path %> 
+    </div>
+  </div>
+<% end %>
+  
   
 </body>
 </html>
