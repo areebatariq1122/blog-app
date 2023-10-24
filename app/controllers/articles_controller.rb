@@ -50,6 +50,12 @@ class ArticlesController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up) do |user_params|
+      user_params.permit(:email, :password, :password_confirmation, :roles)
+    end
+  end
+
   private 
   
   def article_params
@@ -57,3 +63,5 @@ class ArticlesController < ApplicationController
   end
     
 end
+
+
