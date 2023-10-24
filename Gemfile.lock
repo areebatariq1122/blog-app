@@ -173,6 +173,8 @@ GEM
     public_suffix (5.0.3)
     puma (6.4.0)
       nio4r (~> 2.0)
+    pundit (2.3.1)
+      activesupport (>= 3.0.0)
     racc (1.7.1)
     rack (3.0.8)
     rack-session (2.0.0)
@@ -230,6 +232,7 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rexml (3.2.6)
+    rolify (6.0.1)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     selenium-webdriver (4.14.0)
@@ -289,8 +292,10 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   puma (>= 5.0)
+  pundit
   rails (~> 7.1.1)
   redis (>= 4.0.1)
+  rolify
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)
