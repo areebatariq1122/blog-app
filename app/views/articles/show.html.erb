@@ -55,15 +55,18 @@
       <li> 
         <h2 style="color:white;">
           <div class="btns">
+          <% if current_user.has_role?(:admin) %>
             <button><%= link_to "Edit", edit_article_path(@article) %></button>
             <button><%= link_to "Delete", article_path(@article), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></button>
-            
+            <% end %>
           </div>                 
         </h2>
       </li>
     </ul>
     
+    
 
+          
     <h2 style="color:white;">
       <div class="title" style="font-size: 30px; font-family: Aries; font-weight: 500;"> Comments: </div> 
       

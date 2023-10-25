@@ -41,13 +41,17 @@
         <% end %>  
       <%end%>
     </ul>
+
+      <h2 style="color:white;">
+        <div class="btns">
+          <% if current_user.has_role?(:admin) %>
+            <button><%= link_to "New Article", new_article_path %></button>
+          <% end %>
+        </div>                 
+        <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+      </h2>
     
-    <h2 style="color:white;">
-      <div class="btns">
-        <button><%= link_to "New Article", new_article_path %></button>
-      </div>                 
-      <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
-    </h2>
+    
     
 
   </div>
