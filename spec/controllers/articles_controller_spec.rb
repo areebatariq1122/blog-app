@@ -74,9 +74,12 @@ include Devise::Test::ControllerHelpers
     let(:article) {create(:article)}
     
     it 'updates the article' do
+      debugger
         new_attributes = { title: 'Updated Title', body: 'Updated Body' }
         patch :update, params: { id: article.id, article: new_attributes }
         article.reload
+
+        debugger
 
         expect(article.title).to eq('Updated Title')
         expect(article.body).to eq('Updated Body')
