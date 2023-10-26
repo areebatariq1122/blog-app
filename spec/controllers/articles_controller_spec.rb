@@ -53,4 +53,36 @@ include Devise::Test::ControllerHelpers
 
   end
 
+  describe "POST create" do       
+    
+    let(:file) { fixture_file_upload(Rails.root.join('app', 'assets', 'images', 'abc.jpg'), 'image/jpeg') }
+    
+    it 'creates a new article' do
+        expect do
+            post :create, params: { article: FactoryBot.attributes_for(:article, image: file) }
+        end.to change(Article, :count).by(1)
+    end
+
+    it 'saves the article' do
+        post :create, params: { article: FactoryBot.attributes_for(:article, image: file) }
+        expect(response).to redirect_to (article_path(Article.last))
+    end
+  end
+
+  describe "PATCH update" do       
+    
+    let(:article) {create(:article)}
+    
+    it 'updates the article' do
+        new_attributes = { title: 'Updated Title', body: 'Updated Body' }
+        patch :update, params: { id: article.id, article: new_attributes }
+        article.reload
+
+        expect(article.title).to eq('Updated Title')
+        expect(article.body).to eq('Updated Body')
+        expect(response).to redirect_to(article)
+    end
+
+  end
+
 end
