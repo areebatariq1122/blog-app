@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   rolify
   extend Devise::Models
+
+  devise :database_authenticatable, :registerable,
+          :recoverable, :rememberable, :validatable
+  include DeviseTokenAuth::Concerns::User
   
   validates :email, uniqueness: true
 

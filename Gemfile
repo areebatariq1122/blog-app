@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby "3.0.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.1.1"
+gem "rails", "~> 7.0.5"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -48,13 +48,15 @@ gem 'cloudinary'
 
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 
-gem 'devise'
+gem "devise"
 
 gem 'rolify'
 
 gem 'pundit'
 
 gem 'faker'
+
+gem 'devise_token_auth'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -64,7 +66,7 @@ group :development, :test do
   gem 'factory_bot_rails'
 
   gem 'rails-controller-testing'
-  
+
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
 end
 
