@@ -82,7 +82,7 @@
 
  .img{
    background: url('background.jpg')no-repeat;
-   width: 100%;
+   width: 110%;
    height: 100vh;
    background-size: cover;
    background-position: center;
@@ -109,13 +109,13 @@
 
  .center .title{
    color: #fff;
-   font-size: 35px;
+   font-size: 25px;
    font-weight: 600;
  }
 
  .center .sub_title{
    color: #fff;
-   font-size: 52px;
+   font-size: 42px;
    font-weight: 600;
  }
 
@@ -125,7 +125,7 @@
 
  .center .btns button{
    height: 50px;
-   width: 120px;
+   width: 150px;
    border-radius: 5px;
    border: none;
    margin: 0 10px;
