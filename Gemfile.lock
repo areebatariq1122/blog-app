@@ -313,7 +313,7 @@ DEPENDENCIES
   rails-controller-testing
   redis (>= 4.0.1)
   rolify
-  rspec-rails (>= 3.9.0)
+  rspec-rails (~> 6.0, >= 6.0.3)
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)

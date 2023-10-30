@@ -13,7 +13,7 @@ module Api
         
             def new
                 @article = Article.new
-                render json: @article
+                render json: @article 
             end
 
 

@@ -1,12 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe ArticlesController do
-include Devise::Test::ControllerHelpers 
+  include Devise::Test::ControllerHelpers 
 
   before do
-    @user = create(:user) 
-    sign_in @user
+    allow(controller).to receive(:authenticate_user!).and_return(true)
+   # @user = create(:user) 
+    #sign_in @user
   end
+
+  
 
   describe "GET index" do
  
@@ -74,12 +77,10 @@ include Devise::Test::ControllerHelpers
     let(:article) {create(:article)}
     
     it 'updates the article' do
-      debugger
         new_attributes = { title: 'Updated Title', body: 'Updated Body' }
         patch :update, params: { id: article.id, article: new_attributes }
         article.reload
 
-        debugger
 
         expect(article.title).to eq('Updated Title')
         expect(article.body).to eq('Updated Body')
