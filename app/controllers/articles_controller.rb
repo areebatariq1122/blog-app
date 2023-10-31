@@ -1,8 +1,8 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user! 
-  
+  #before_action :authenticate_user!
+
   def index
-    @articles = Article.all 
+    @articles = Article.all
   end
 
   def show
@@ -13,24 +13,23 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
-
   def create
     @article = Article.new(article_params)
-  
+
     if params[:article][:image].present?
       uploaded_file = params[:article][:image]
       cloudinary_upload = Cloudinary::Uploader.upload(uploaded_file.tempfile)
       @article.image = cloudinary_upload['secure_url']
     end
-  
+
     if @article.save
-      redirect_to article_path(@article), notice: "Article created successfully"
+      redirect_to article_path(@article), notice: 'Article created successfully'
 
     else
       render :new, status: :unprocessable_entity
     end
   end
-  
+
   def edit
     @article = Article.find(params[:id])
   end
@@ -41,7 +40,7 @@ class ArticlesController < ApplicationController
       redirect_to @article
     else
       render :edit, status: :unprocessable_entity
-    end  
+    end
   end
 
   def destroy
@@ -56,12 +55,9 @@ class ArticlesController < ApplicationController
     end
   end
 
-  private 
-  
+  private
+
   def article_params
     params.require(:article).permit(:title, :body, :Upload_Img, :status)
   end
-    
 end
-
-

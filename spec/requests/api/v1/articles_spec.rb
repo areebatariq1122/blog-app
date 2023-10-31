@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Api::V1::Articles", type: :request do
-
+RSpec.describe 'Api::V1::Articles', type: :request do
   describe 'GET /api/v1/articles' do
     it 'returns a list of articles' do
       articles = FactoryBot.create_list(:article, 3)
@@ -27,7 +26,7 @@ RSpec.describe "Api::V1::Articles", type: :request do
     end
 
     it 'returns a 404 status when the article does not exist' do
-      get '/api/v1/articles/999' 
+      get '/api/v1/articles/999'
 
       expect(response).to have_http_status(404)
     end
@@ -39,7 +38,7 @@ RSpec.describe "Api::V1::Articles", type: :request do
 
       post '/api/v1/articles', params: { article: article_params }
 
-      expect(response).to have_http_status(201) 
+      expect(response).to have_http_status(201)
       expect(Article.count).to eq(1)
     end
 
@@ -54,18 +53,17 @@ RSpec.describe "Api::V1::Articles", type: :request do
       expect(json_response['title']).to eq('latest')
       expect(json_response['body']).to eq('Article body goes here')
     end
-
   end
 
   describe 'PATCH /api/v1/articles/:id' do
     it 'updates an existing article' do
-      article = FactoryBot.create(:article) 
-      updated_attributes = { title: 'Updated latest', body: 'Updated Article body goes here'}
+      article = FactoryBot.create(:article)
+      updated_attributes = { title: 'Updated latest', body: 'Updated Article body goes here' }
 
       put "/api/v1/articles/#{article.id}", params: { article: updated_attributes }
 
-      expect(response).to have_http_status(200) 
-      article.reload 
+      expect(response).to have_http_status(200)
+      article.reload
       expect(article.title).to eq('Updated latest')
       expect(article.body).to eq('Updated Article body goes here')
     end
@@ -76,7 +74,7 @@ RSpec.describe "Api::V1::Articles", type: :request do
 
       put "/api/v1/articles/#{article.id}", params: { article: updated_attributes }
 
-      expect(response).to have_http_status(200) 
+      expect(response).to have_http_status(200)
 
       json_response = JSON.parse(response.body)
       expect(json_response['title']).to eq('Updated latest')
@@ -84,9 +82,9 @@ RSpec.describe "Api::V1::Articles", type: :request do
     end
 
     it 'returns a 404 status' do
-      put '/api/v1/articles/999', params: { article: { title: 'Updated latest', body: 'Updated Article body goes here' } }
-      expect(response).to have_http_status(404) 
+      put '/api/v1/articles/999',
+          params: { article: { title: 'Updated latest', body: 'Updated Article body goes here' } }
+      expect(response).to have_http_status(404)
     end
   end
-
 end
