@@ -60,14 +60,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  private 
+  private
 
-    def configure_sign_up_params
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :role])
-    end
-  
-    def sign_up(resource_name, resource)
-      resource.add_role(params[:user][:roles].to_sym)
-      super
-    end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[email password password_confirmation role])
+  end
+
+  def sign_up(resource_name, resource)
+    resource.add_role(params[:user][:roles].to_sym)
+    super
+  end
 end

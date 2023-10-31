@@ -20,5 +20,4 @@ RSpec.describe Article, type: :model do
     article = FactoryBot.build(:article, status: nil)
     expect(article).not_to be_valid
   end
-
 end
