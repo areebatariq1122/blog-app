@@ -10,6 +10,7 @@ class Api::V1::ArticlesController < ApplicationController
     render json: @article
   end
 
+<<<<<<< HEAD
   def new
     @article = Article.new
     render json: @article
@@ -17,6 +18,34 @@ class Api::V1::ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+=======
+ 
+            def create
+                @article = Article.new(article_params)
+    
+                if params[:article][:image].present?
+                    uploaded_file = params[:article][:image]
+                    cloudinary_upload = Cloudinary::Uploader.upload(uploaded_file.tempfile)
+                    @article.image = cloudinary_upload['secure_url']
+                end
+    
+                if @article.save
+                    render json: @article, status: :created
+                else
+                    render json: { errors: @article.errors.full_messages }, status: :unprocessable_entity
+                end
+            end
+            
+            def update
+                @article = Article.find(params[:id])
+        
+                if @article.update(article_params)
+                  render json: @article
+                else
+                  render json: { errors: @article.errors.full_messages }, status: :unprocessable_entity
+                end
+            end
+>>>>>>> 116c7bb (Seed File and Serializer added)
 
     if params[:article][:image].present?
       uploaded_file = params[:article][:image]
