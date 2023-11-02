@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @decorated_article = ArticlesDecorator.new(@article)
   end
 
   def new
@@ -17,11 +18,12 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if params[:article][:image].present?
-      uploaded_file = params[:article][:image]
-      cloudinary_upload = Cloudinary::Uploader.upload(uploaded_file.tempfile)
+      #uploaded_file = params[:article][:image]
+      cloudinary_service = CloudinaryService.new
+      #cloudinary_upload = Cloudinary::Uploader.upload(uploaded_file.tempfile)
+      cloudinary_upload = cloudinary_service.upload_image(params[:article][:image])
       @article.image = cloudinary_upload['secure_url']
     end
-
     if @article.save
       redirect_to article_path(@article), notice: 'Article created successfully'
 

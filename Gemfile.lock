@@ -56,6 +56,10 @@ GEM
       globalid (>= 0.3.6)
     activemodel (7.0.8)
       activesupport (= 7.0.8)
+    activemodel-serializers-xml (1.0.2)
+      activemodel (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
     activerecord (7.0.8)
       activemodel (= 7.0.8)
       activesupport (= 7.0.8)
@@ -77,7 +81,7 @@ GEM
     aws_cf_signer (0.1.3)
     bcrypt (3.1.19)
     bindex (0.8.1)
-    bootsnap (1.16.0)
+    bootsnap (1.17.0)
       msgpack (~> 1.2)
     builder (3.2.4)
     capybara (3.39.2)
@@ -118,6 +122,13 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
+    draper (4.0.2)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
+      activemodel-serializers-xml (>= 1.0)
+      activesupport (>= 5.0)
+      request_store (>= 1.0)
+      ruby2_keywords
     erubi (1.12.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
@@ -133,8 +144,9 @@ GEM
       domain_name (~> 0.5)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
-    importmap-rails (1.2.1)
+    importmap-rails (1.2.3)
       actionpack (>= 6.0.0)
+      activesupport (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.6.0)
     irb (1.8.3)
@@ -163,7 +175,7 @@ GEM
     mini_mime (1.1.5)
     minitest (5.20.0)
     msgpack (1.7.2)
-    net-imap (0.4.2)
+    net-imap (0.4.3)
       date
       net-protocol
     net-pop (0.1.2)
@@ -175,8 +187,6 @@ GEM
     netrc (0.11.0)
     nio4r (2.5.9)
     nokogiri (1.15.4-x86_64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.23.0)
@@ -190,7 +200,7 @@ GEM
       nio4r (~> 2.0)
     pundit (2.3.1)
       activesupport (>= 3.0.0)
-    racc (1.7.1)
+    racc (1.7.2)
     rack (2.2.8)
     rack-test (2.1.0)
       rack (>= 1.3)
@@ -227,7 +237,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
-    rake (13.0.6)
+    rake (13.1.0)
     rdoc (6.5.0)
       psych (>= 4.0.0)
     redis (5.0.8)
@@ -237,6 +247,8 @@ GEM
     regexp_parser (2.8.2)
     reline (0.3.9)
       io-console (~> 0.5)
+    request_store (1.5.1)
+      rack (>= 1.4)
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
@@ -293,8 +305,9 @@ GEM
       rubocop-capybara (~> 2.17)
       rubocop-factory_bot (~> 2.22)
     ruby-progressbar (1.13.0)
+    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
-    selenium-webdriver (4.14.0)
+    selenium-webdriver (4.15.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -305,8 +318,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.6.7-x86_64-darwin)
-    sqlite3 (1.6.7-x86_64-linux)
+    sqlite3 (1.6.8-x86_64-darwin)
     stimulus-rails (1.3.0)
       railties (>= 6.0.0)
     stringio (3.0.8)
@@ -339,7 +351,6 @@ GEM
 
 PLATFORMS
   x86_64-darwin-21
-  x86_64-linux
 
 DEPENDENCIES
   active_model_serializers
@@ -350,6 +361,7 @@ DEPENDENCIES
   devise
   devise_token_auth
   dotenv-rails
+  draper
   factory_bot_rails
   faker
   importmap-rails

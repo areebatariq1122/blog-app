@@ -6,7 +6,6 @@ class ArticlesPresenter < BasePresenter
   def basic
     articles = {}
     articles[:id] = @articles.id
-    # TODO: fill in presenter
     articles[:created_at] = @articles.created_at
     articles[:updated_at] = @articles.updated_at
     articles

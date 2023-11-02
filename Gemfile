@@ -62,6 +62,8 @@ gem 'rubocop', '~> 1.56', '>= 1.56.3'
 
 gem 'active_model_serializers'
 
+gem 'draper'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
 

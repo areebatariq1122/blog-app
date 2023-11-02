@@ -8,11 +8,8 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-
-
-
 Article.find_or_create_by(
-  :title => "areeba",
-  :body => "my name is areeba",
+  :title => "Oh wow",
+  :body => "my name is Oh Wow",
   :status => "public",
   :image => nil)
